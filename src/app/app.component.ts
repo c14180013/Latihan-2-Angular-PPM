@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'my-app',
@@ -6,5 +7,29 @@ import { Component } from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  name = 'Angular';
+  constructor(private router : Router) {}
+
+  pageInput(){
+    this.router.navigate(['/input']);
+  }
+
+  pageEdit(){
+    this.router.navigate(['/edit']);
+  }
+  
+  pageList(){
+    this.router.navigate(['/list']);
+  }
+
+  
+  listJurusan = [];
+  data = [];
+  input(nama, penjelasan){
+    this.data = [nama, penjelasan];
+    this.listJurusan.push(this.data);
+  }
+
+  getListData(){
+    return this.listJurusan;
+  }
 }
